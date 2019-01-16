@@ -9,6 +9,7 @@
     "test:ci": "ng test --karma-config=src/karma.ci.conf.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "pree2e:ci": "webdriver-manager update",
     "e2e:ci": "ng e2e --protractorConfig=e2e/protractor.ci.conf.js"
   },
   "private": true,
