@@ -1,0 +1,14 @@
+<div class="map__search-place-container">
+  <label *ngIf="mapLoaded">Find place
+    <input type="text" class="map__search-place-field" placeholder="Costa Rica"/>
+  </label>
+</div>
+<agm-map
+  class="map__google-map"
+  [zoom]="zoom"
+  [mapTypeId]="mapTypeId"
+  [latitude]="latitude"
+  [longitude]="longitude"
+  (mapReady)="mapLoaded = true">
+</agm-map>
+
