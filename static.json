@@ -2,7 +2,7 @@
   "root": "dist/",
   "routes": {
     "/our-map/*": "/our-map/",
-    "/**": "our-map/index.html"
+    "/**": "/our-map/index.html"
   },
   "https_only": true
 }
