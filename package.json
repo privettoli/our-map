@@ -10,7 +10,7 @@
     "start": "ng serve",
     "build": "ng build --aot --prod",
     "test": "ng test",
-    "test:ci": "ng test --karma-config=src/karma.ci.conf.js",
+    "test:ci": "ng test --karma-config=src/karma.ci.conf.js --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pree2e:ci": "webdriver-manager update --gecko=false",
