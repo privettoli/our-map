@@ -3,7 +3,7 @@ addons:
   chrome: stable
 language: node_js
 node_js:
-- 11.6.0
+- 10.15.0
 before_script:
 - npm install
 script:
