@@ -1,0 +1,5 @@
+version: 2
+exclude_patterns:
+    - "e2e/"              # E2E
+    - "**/*.spec.ts"      # Unit-tests
+    - "src/environments"  # Duplicated properties
