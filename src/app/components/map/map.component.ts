@@ -12,4 +12,9 @@ export class MapComponent {
   zoom: number = environment.googleMapsDefaultSettings.zoom;
   mapTypeId = environment.googleMapsDefaultSettings.mapTypeId;
   mapLoaded: boolean = false;
+  places: string[] = [];
+
+  addPlace(searchInput: KeyboardEvent): void {
+    this.places.push((searchInput.target as HTMLInputElement).value);
+  }
 }

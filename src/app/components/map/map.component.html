@@ -1,7 +1,19 @@
-<div class="map__search-place-container">
-  <label *ngIf="mapLoaded">Find place
-    <input type="text" class="map__search-place-field" placeholder="Costa Rica"/>
+<div *ngIf="mapLoaded"
+     class="map__search-place-container">
+  <label>Find place
+    <input (keyup.enter)="addPlace($event)"
+           class="map__search-place-field"
+           placeholder="Costa Rica"
+           type="text"/>
   </label>
+  <div class="map__places-list">
+    <ng-container *ngIf="places.length === 0">
+      Enter name of place and hit Enter to add place
+    </ng-container>
+    <div *ngFor="let placeName of places">
+      {{placeName}}
+    </div>
+  </div>
 </div>
 <agm-map
   class="map__google-map"
@@ -11,4 +23,3 @@
   [longitude]="longitude"
   (mapReady)="mapLoaded = true">
 </agm-map>
-

@@ -1,15 +1,19 @@
-import {$, browser} from 'protractor';
+import {$, browser, ElementFinder} from 'protractor';
 
 export class MapPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getGoogleMap() {
+  getGoogleMap(): ElementFinder {
     return $('.map__google-map');
   }
 
-  getSearchPlaceField() {
+  getSearchPlaceField(): ElementFinder {
     return $('.map__search-place-field');
+  }
+
+  getPlacesList(): ElementFinder {
+    return $('.map__places-list');
   }
 }

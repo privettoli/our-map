@@ -19,6 +19,13 @@ describe(`MapComponent`, () => {
     component = fixture.componentInstance;
   });
   describe(`Isolation Tests`, () => {
+    describe(`addPlace`, () => {
+      it(`should add value of input from event to places list`, () => {
+        component.addPlace({target: {value: 'Some place far far away'} as HTMLInputElement} as unknown as KeyboardEvent);
+
+        expect(component.places).toEqual(['Some place far far away']);
+      });
+    })
   });
   describe(`Shallow Tests`, () => {
     it(`should initialize google map with default properties`, () => {
@@ -35,19 +42,51 @@ describe(`MapComponent`, () => {
       expect(agmMap.mapTypeId).toEqual('hybrid');
       expect(agmMap.zoom).toEqual(21);
     });
-    it(`should display search place field if map has been loaded`, () => {
-      const agmMap: AgmMap = fixture.debugElement.query(By.css('.map__google-map')).componentInstance;
+    describe(`map has been loaded`, () => {
+      beforeEach(() => {
+        const agmMap: AgmMap = fixture.debugElement.query(By.css('.map__google-map')).componentInstance;
 
-      agmMap.mapReady.emit(new Event('mapReady'));
+        agmMap.mapReady.emit(new Event('mapReady'));
 
-      fixture.detectChanges();
+        fixture.detectChanges();
+      });
+      it(`should display search place container`, () => {
+        expect(fixture.debugElement.query(By.css('.map__search-place-container'))).toBeTruthy();
+      });
+      it(`should display no places in the list of places text`, () => {
+        expect(fixture.debugElement.query(By.css('.map__places-list')).nativeElement.innerText)
+          .toEqual('Enter name of place and hit Enter to add place')
+      });
+      it(`should add name of place on Enter hit of place input`, () => {
+        const searchPlaceInput = fixture.debugElement.query(By.css('.map__search-place-field')).nativeElement;
+        searchPlaceInput.value = 'Playa Doña Ana';
+        searchPlaceInput.dispatchEvent(new KeyboardEvent('keyup', {
+          key: 'enter',
+        }));
 
-      expect(fixture.debugElement.query(By.css('.map__search-place-field'))).toBeTruthy();
+        fixture.detectChanges();
+
+        expect(component.places).toEqual(['Playa Doña Ana']);
+      });
+      it(`should display places that are added to the list`, () => {
+        component.places = ['Playa Doña Ana'];
+
+        fixture.detectChanges();
+
+        expect(fixture.debugElement.query(By.css('.map__places-list')).nativeElement.innerText.trim())
+          .toEqual('Playa Doña Ana')
+      });
     });
-    it(`should not display search place field if map wasn't loaded`, () => {
-      fixture.detectChanges();
-
-      expect(fixture.debugElement.query(By.css('.map__search-place-field'))).toBeFalsy();
+    describe(`map has not been loaded`, () => {
+      beforeEach(() => {
+        fixture.detectChanges();
+      });
+      it(`should not display search place field if map wasn't loaded`, () => {
+        expect(fixture.debugElement.query(By.css('.map__search-place-field'))).toBeFalsy();
+      });
+      it(`should not display list of places`, () => {
+        expect(fixture.debugElement.query(By.css('.map__places-list'))).toBeFalsy();
+      });
     });
   });
 });
