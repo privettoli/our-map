@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.com/privettoli/our-map.svg?branch=master)](https://travis-ci.com/privettoli/our-map) 
-[![Greenkeeper badge](https://badges.greenkeeper.io/privettoli/our-map.svg)](https://greenkeeper.io/)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=privettoli/our-map)](https://dependabot.com)
-[![Liceense badge](https://badgen.net/github/license/privettoli/our-map)](https://github.com/privettoli/our-map/blob/master/LICENSE)
+[![Greenkeeper](https://badges.greenkeeper.io/privettoli/our-map.svg)](https://greenkeeper.io/)
+[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=privettoli/our-map)](https://dependabot.com)
+[![Snyk](https://img.shields.io/snyk/vulnerabilities/github/privettoli/our-map.svg?targetFile=package.json&label=Snyk)](https://snyk.io/test/github/privettoli/our-map?targetFile=package.json)
+[![License badge](https://badgen.net/github/license/privettoli/our-map)](https://github.com/privettoli/our-map/blob/master/LICENSE)
 
 [![Icebox issues](https://badgen.net/github/label-issues/privettoli/our-map/icebox)](https://github.com/privettoli/our-map/projects/1#column-4287892)
 [![User stories](https://badgen.net/github/label-issues/privettoli/our-map/user%20story?label=total%20user%20stories)](https://github.com/privettoli/our-map/projects/1#column-4287870)
